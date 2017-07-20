@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JavaScript Blockchain</title>
+  <script src="sjcl.js"></script>
+</head>
+<body>
+  <script src="script.js"></script>
+
+  <script>
+    const blockchain = [create_genesis_block()];
+    let previous_block = blockchain[0];
+
+    const num_of_blocks_to_add = 20;
+
+    for(let i = 0; i < num_of_blocks_to_add; i++) {
+      let block_to_add = next_block(previous_block);
+      blockchain.push(block_to_add);
+      previous_block = block_to_add;
+      console.log(`Block ${block_to_add.index} has been added to the blockchain!`);
+      console.log(`Hash: ${block_to_add.hash}`);
+      console.log(`Data: ${block_to_add.data}`);
+    }
+  </script>
+</body>
+</html>
